@@ -1,10 +1,11 @@
-from gfg_dsa_scrap.common_utils import GfgDsaScrap, time, const, By, WebDriverWait, NoSuchElementException
+from gfg_dsa_scrap.common_utils import GfgDsaScrap, time, const, By, WebDriverWait, NoSuchElementException, os
 
 class DsaBstScraper(GfgDsaScrap):
     def land_gfg_dsa_bst_page(self):
         self.get(const.gfg_dsa_binary_search_tree_page_url)
         link_elements = self.find_elements(By.CSS_SELECTOR, ".entry-content a")
         links = [link.get_attribute("href") for link in link_elements]
+        os.mkdir("gfg_dsa/binary_search_tree")
         for link in links:
             if link in ("javascript:void(0)", "None", None):
                 continue

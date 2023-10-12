@@ -1,4 +1,4 @@
-from gfg_dsa_scrap.common_utils import GfgDsaScrap, time, const, By, WebDriverWait, NoSuchElementException
+from gfg_dsa_scrap.common_utils import GfgDsaScrap, time, const, By, WebDriverWait, NoSuchElementException, os
 
 class DsaLandPageScraper(GfgDsaScrap):
     def land_gfg_dsa_land_page(self):
@@ -13,10 +13,9 @@ class DsaLandPageScraper(GfgDsaScrap):
         with open("gfg_dsa/gfg_dsa_first_page.txt", "w") as f:
             f.write(content)
         f.close()
-
-
         link_elements = self.find_elements(By.CSS_SELECTOR, ".entry-content a")
         links = [link.get_attribute("href") for link in link_elements]
+        os.mkdir("gfg_dsa/land_page")
         for link in links:
             if link in ("javascript:void(0)", "None", None):
                 continue
