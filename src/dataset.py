@@ -1,7 +1,7 @@
 import os
 import sys 
 import tqdm 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
 
 #function which takes in the path and then it run parse the files present in the folder 
 # Subject - Units and then topics 
@@ -32,23 +32,36 @@ class TextDataset:
         
     def path_loader(self):
         
-        return self.find_files(self.parent_folder)
+        return self._find_files(self.parent_folder)
      
     
     def _find_files(self,root_dir):
-        self.file_list=[]
+        file_list=[]
         for root, _, files in os.walk(root_dir):
             for file in files:
-                self.file_list.append(os.path.join(root, file))
+                file_list.append(os.path.join(root, file))
         
-        return self.file_list 
+        return file_list 
         
     
     def text_splitter(self):
-        pass 
+        file_list=self.path_loader()
+        text_splitter=CharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200,
+        length_function=len
+    
+        )
+        text='<SOS>'
+        for file in file_list:
+            with open(file,'r') as f:
+                raw_text=f.read()
+            text=text+' '+raw_text
+        chunks = text_splitter.split_text(text)
+        return chunks 
     
     def text_loader(self):
-        pass 
+        return self.text_splitter()
         
     def vocabulary(self):
         pass 
