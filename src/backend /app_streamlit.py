@@ -14,6 +14,11 @@ def get_pdf_text(pdf_docs):
 
 
 
+def pdf_text(file_path):
+    with open(file_path,'r') as f:
+        f=f.read()
+
+    
 st.header("LUMOS  :books:")
 user_question = st.text_input("Ask a question about your subject:")
 
