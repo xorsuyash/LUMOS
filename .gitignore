@@ -1,3 +1,6 @@
 .env
 quadrant.txt 
 data/GFG
+
+venv/
+__pycache__/
