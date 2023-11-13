@@ -1,4 +1,7 @@
+#enviorenments
 .env
 venv/
+
+#binaries
 __pycache__/
 
