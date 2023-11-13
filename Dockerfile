@@ -1,7 +1,7 @@
 FROM python:3.11.2
 
 WORKDIR /app
-COPY ./requirements.txt .
+COPY ./auth/requirements.txt .
 
 RUN pip install -r requirements.txt
 

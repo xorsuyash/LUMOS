@@ -1,0 +1,7 @@
+selenium
+argparse
+openai 
+quadrant 
+langchain 
+streamlit 
+
