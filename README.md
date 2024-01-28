@@ -1,1 +1,1 @@
-# LUMOS
+# lumos 
